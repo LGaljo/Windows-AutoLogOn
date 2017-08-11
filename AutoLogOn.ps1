@@ -6,7 +6,7 @@ $version = $PSVersionTable.PSVersion.major
 
 IF(Test-Path $registryPath) {
 	Set-ItemProperty -Path $registryPath -Name "AutoAdminLogon" -Value "1"
-	IF($version -qe 5) {
+	IF($version -ge 5) {
 		$test = Get-ItemPropertyValue -Path $registryPath -Name "AutoAdminLogon"
 		IF($test -eq 1) {
 			Write-Host "AutoAdminLogon successfully set to 1"
@@ -17,7 +17,7 @@ IF(Test-Path $registryPath) {
 	}
 
 	Set-ItemProperty -Path $registryPath -Name "DefaultUserName" -Value $username
-	IF($version -qe 5) {
+	IF($version -ge 5) {
 		$test = Get-ItemPropertyValue -Path $registryPath -Name "DefaultUserName"
 		IF($test -eq $username) {
 			Write-Host "DefaultUserName successfully set to" $username
@@ -28,7 +28,7 @@ IF(Test-Path $registryPath) {
 	}
 
 	Set-ItemProperty -Path $registryPath -Name "DefaultPassword" -Value $password
-	IF($version -qe 5) {
+	IF($version -ge 5) {
 		$test = Get-ItemPropertyValue -Path $registryPath -Name "DefaultPassword"
 		IF($test -eq $password) {
 			Write-Host "DefaultPassword successfully set to " $password
@@ -39,7 +39,7 @@ IF(Test-Path $registryPath) {
 	}
 
 	Set-ItemProperty -Path $registryPath -Name "DefaultDomainName" -Value "ad"
-	IF($version -qe 5) {
+	IF($version -ge 5) {
 		$test = Get-ItemPropertyValue -Path $registryPath -Name "DefaultDomainName"
 		IF($test -eq "ad") {
 			Write-Host "DefaultDomainName successfully set to ad"
